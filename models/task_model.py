@@ -18,3 +18,4 @@ class TareaActualizar(BaseModel):
     fecha_finalizacion: Optional[datetime] = None
     estado: Optional[str] = None
 
+

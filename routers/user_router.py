@@ -2,6 +2,7 @@ import bcrypt
 import jwt
 from fastapi import APIRouter, HTTPException, status
 from models.user_model import UsuarioCrear
+from models.user_model import CredencialesUsuario
 from typing import Dict
 from datetime import datetime, timedelta
 from pydantic import BaseModel
@@ -30,25 +31,25 @@ async def crear_usuario(usuario: UsuarioCrear) -> UsuarioCrear:
     usuario_cifrado = usuario.copy(update={"contrasena": hashed_password.decode('utf-8')})
 
     # Simulación del almacenamiento en base de datos
-    fake_db_usuario[usuario.id] = usuario_cifrado
+    #fake_db_usuario[usuario.id] = usuario_cifrado
+    fake_db_usuario[usuario.nombre_usuario] = usuario_cifrado
 
     # Devuelve los datos del usuario (sin incluir la contraseña real)
     usuario_creado = usuario_cifrado.dict()
     del usuario_creado["contrasena"]
     return usuario_creado
 
-
 @router.post("/usuarios/iniciar-sesion", response_model=Token)
-async def iniciar_sesion(nombre_usuario: str, contrasena: str):
-    usuario = fake_db_usuario.get(nombre_usuario)
+async def iniciar_sesion(credenciales: CredencialesUsuario):
+    usuario = fake_db_usuario.get(credenciales.nombre_usuario)
 
     if not usuario:
-        raise HTTPException(status_code=400, detail="Credenciales incorrectas")
+        raise HTTPException(status_code=400, detail="Credencial USUARIO es incorrecto")
 
-    if not bcrypt.checkpw(contrasena.encode('utf-8'), usuario.contrasena.encode('utf-8')):
-        raise HTTPException(status_code=400, detail="Credenciales incorrectas")
+    # Compara la contraseña proporcionada con la almacenada, sin codificar la almacenada de nuevo
+    if not bcrypt.checkpw(credenciales.contrasena.encode('utf-8'), usuario.contrasena.encode('utf-8')):
+        raise HTTPException(status_code=401, detail="Credenciales CLAVE incorrecta")
 
-    # Crear un token JWT
     data_token = {
         "sub": usuario.nombre_usuario,
         "exp": datetime.utcnow() + timedelta(hours=24)

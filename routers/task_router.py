@@ -9,6 +9,7 @@ from models.category_model import CategoriaCrear
 
 router = APIRouter()
 
+
 fake_db_tareas: Dict[int, TareaCrear] = {}
 fake_db_usuarios: Dict[int, UsuarioCrear] = {}
 fake_db_categorias: Dict[int, CategoriaCrear] = {}

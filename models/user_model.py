@@ -7,3 +7,8 @@ class UsuarioCrear(BaseModel):
     contrasena: str = Field(None, min_length=8,max_length=16)
     imagen_perfil: Optional[str] = None
 
+class CredencialesUsuario(BaseModel):
+    nombre_usuario: str
+    contrasena: str
+
+
