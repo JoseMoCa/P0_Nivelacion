@@ -20,6 +20,7 @@
 ### PASO 2 (Correr el appweb, pero debo inicializar el servidor Uvicorn)
 #   uvicorn main:app --reload
 
+# PASO 3 (Test)  correr test:   pytest
 
 ## DESARROLLO: ##
 import bcrypt

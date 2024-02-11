@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/josemorenoc/Documents/2_Maestria MISIS/1_Soluciones Cloud/P0_Nivelacion/entorno_web_1/bin/python3.11" "$0" "$@"
+'''exec' "/Users/josemorenoc/PycharmProjects/P0_Nivelacion/entorno_web_1/bin/python3.11" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
