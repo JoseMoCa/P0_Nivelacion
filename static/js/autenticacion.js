@@ -23,6 +23,13 @@ function registrarUsuario(nombreUsuario, contrasena) {
         document.getElementById('register-form').style.display = 'none';
         document.getElementById('login-form').style.display = 'block';
     })
+    .then(data => {
+    console.log('Registro/Inicio de sesión exitoso:', data);
+    // Almacenar el token en localStorage
+    localStorage.setItem('token', data.access_token);
+    // Redirigir al usuario a user-home.html
+    window.location.href = 'http://127.0.0.1:8000/user-home.html';  // Asegúrate de que la ruta sea correcta
+    })
     .catch((error) => {
         console.error('Error en el registro:', error);
     });
@@ -51,7 +58,7 @@ function iniciarSesion(nombreUsuario, contrasena) {
         console.log('Inicio de sesión exitoso:', data);
         // Almacenar el token en localStorage y redirigir al usuario
         localStorage.setItem('token', data.access_token);
-        window.location.href = '/ruta-a-tu-dashboard';  // Ajusta a la ruta de tu aplicación donde el usuario debería ir después de iniciar sesión
+        window.location.href = 'http://127.0.0.1:8000/user-home.html';  // Ajusta a la ruta de tu aplicación donde el usuario debería ir después de iniciar sesión
     })
     .catch((error) => {
         console.error('Error en el inicio de sesión:', error);
