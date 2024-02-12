@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Función para cargar tareas
     function cargarTareas() {
-        fetch('/tareas')
+        fetch('http://127.0.0.1:8000/tareas')
             .then(response => response.json())
             .then(tareas => {
                 const listaTareas = document.getElementById('tareas-lista');

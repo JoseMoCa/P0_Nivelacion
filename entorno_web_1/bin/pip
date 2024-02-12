@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/josemorenoc/PycharmProjects/P0_Nivelacion/entorno_web_1/bin/python3.11" "$0" "$@"
-' '''
+#!/Users/josemorenoc/PycharmProjects/P0_Nivelacion/entorno_web_1/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys

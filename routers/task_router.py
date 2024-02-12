@@ -96,7 +96,9 @@ async def obtener_tarea_por_id(id_tarea: int) -> TareaCrear:
 
     return fake_db_tareas[id_tarea]
 
-
+@router.get("/tareas")
+async def leer_tareas1():
+    return fake_db_tareas
 @router.get("/debug/ver-base-tareas")
 async def leer_tareas():
     return fake_db_tareas
