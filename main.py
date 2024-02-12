@@ -27,15 +27,18 @@ import bcrypt
 import jwt
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from routers import user_router, category_router, task_router
 
 app = FastAPI()
+
+# Montar la carpeta 'static' para servir archivos estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Incluir los routers en la aplicación
 app.include_router(user_router.router)
 app.include_router(category_router.router)
 app.include_router(task_router.router)
-
 
 # una sugerencia es crear un endpoint raiz, que devuelva un mensaje:
 @app.get("/")
