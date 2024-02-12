@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APPWEB para tus Tareas</title>
-    <link rel="stylesheet" href="/static/css/estilo.css">
+    <link rel="stylesheet" href="../static/css/estilo.css">
 </head>
 <body>
       <div id="auth-container">
+        <!-- Registro de Usuario -->
+        <form id="register-form" style="display: none;">
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <input type="url" placeholder="URL de la foto de perfil (opcional)">
+            <button type="submit">Crear Cuenta</button>
+            <button type="button" id="show-login">Ya tengo cuenta</button>
+        </form>
         <!-- Autenticación de Usuario -->
         <form id="login-form">
             <input type="email" placeholder="Correo electrónico" required>
@@ -16,23 +24,16 @@
             <button type="button" id="show-register">Registrarse</button>
         </form>
 
-        <form id="register-form" style="display: none;">
-            <input type="email" placeholder="Correo electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
-            <button type="submit">Crear Cuenta</button>
-            <button type="button" id="show-login">Ya tengo cuenta</button>
-        </form>
     </div>
 
-    <script src="/static/js/autenticacion.js"></script>
+    <script src="../static/js/autenticacion.js"></script>
+    <script src="../static/js/registro.js"></script>
     <!-- <script src="/static/js/tareas.js"></script>-->
-
+    <script src="/static/js/app.js"></script>
 </body>
 </html>
-<!-- Añadir al final del body en tu index.html -->
 
-   <!-- <script src="/static/js/app.js"></script> -->
-    <script src="/static/js/registro.js"></script>
+
 
 
 

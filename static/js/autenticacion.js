@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded',
     (event) => {
 
 // Función para registrar un nuevo usuario
-        function registrarUsuario(nombreusuario, contrasena) {
+        function registrarUsuario(nombreusuario, contrasena, imagenperfil) {
             fetch('http://127.0.0.1:8000/usuarios', {
                 method: 'POST',
                 headers: {
@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded',
                 },
                 body: JSON.stringify({
                     nombre_usuario: nombreusuario,
-                    contrasena: contrasena
+                    contrasena: contrasena,
+                    imagen_perfil: imagenperfil
                 })
             })
                 .then(response => {
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded',
                     // Almacenar el token en localStorage
                     localStorage.setItem('token', data.access_token);
                     // Redirigir al usuario a user-home.html
-                    window.location.href = 'http://127.0.0.1:8000/user-home.html';  // Asegúrate de que la ruta sea correcta
+                    window.location.href = 'http://127.0.0.1:8000/user-home.html';
                 })
                 .catch((error) => {
                     console.error('Error en el registro:', error);
@@ -71,14 +72,19 @@ document.addEventListener('DOMContentLoaded',
 // Eventos para los formularios
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            const nombreusuario = this.querySelector('input[type="text"]').value;
+            const nombreusuario = this.querySelector('input[type="email"]').value;
             const contrasena = this.querySelector('input[type="password"]').value;
-            registrarUsuario(nombreusuario, contrasena);
+            let imagen_perfil = this.querySelector('input[type="url"]').value;
+            // Establecer una URL por defecto para la foto de perfil si el campo está vacío
+            if (!imagen_perfil) {
+                imagen_perfil = 'https://media.istockphoto.com/id/172177007/es/foto/luchador-de-negocios.jpg?s=1024x1024&w=is&k=20&c=p5IhWikTVVgBjIkelZ-mpOnNtcZZbW07y3-Fr66WQGs=';
+            }
+            registrarUsuario(nombreusuario, contrasena,imagen_perfil);
         });
 
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            const nombreusuario = this.querySelector('input[type="text"]').value;
+            const nombreusuario = this.querySelector('input[type="email"]').value;
             const contrasena = this.querySelector('input[type="password"]').value;
             iniciarSesion(nombreusuario, contrasena);
         });
