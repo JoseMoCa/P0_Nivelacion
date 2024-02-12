@@ -88,4 +88,16 @@ document.addEventListener('DOMContentLoaded',
             const contrasena = this.querySelector('input[type="password"]').value;
             iniciarSesion(nombreusuario, contrasena);
         });
+
+        document.getElementById('show-register').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';  // Ocultar el formulario de inicio de sesión
+            document.getElementById('register-form').style.display = 'block';  // Mostrar el formulario de registro
+        });
+
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('register-form').style.display = 'none';  // Ocultar el formulario de registro
+            document.getElementById('login-form').style.display = 'block';  // Mostrar el formulario de inicio de sesión
+        });
+
+
     });

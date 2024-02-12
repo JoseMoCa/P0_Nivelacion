@@ -8,23 +8,22 @@
 </head>
 <body>
       <div id="auth-container">
-        <!-- Registro de Usuario -->
-        <form id="register-form" style="display: none;">
-            <input type="email" placeholder="Correo electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
-            <input type="url" placeholder="URL de la foto de perfil (opcional)">
-            <button type="submit">Crear Cuenta</button>
-            <button type="button" id="show-login">Ya tengo cuenta</button>
-        </form>
-        <!-- Autenticación de Usuario -->
-        <form id="login-form">
-            <input type="email" placeholder="Correo electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
-            <button type="submit">Ingresar</button>
-            <button type="button" id="show-register">Registrarse</button>
-        </form>
-
-    </div>
+    <!-- Registro de Usuario -->
+    <form id="register-form">
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña (min 8 car.)" required>
+        <input type="url" placeholder="URL de la foto de perfil (opcional)">
+        <button type="submit">Crear Cuenta</button>
+        <button type="button" id="show-login">Ya tengo cuenta</button>
+    </form>
+    <!-- Autenticación de Usuario -->
+    <form id="login-form" style="display: none;">
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+        <button type="button" id="show-register">Registrarse</button>
+    </form>
+</div>
 
     <script src="../static/js/autenticacion.js"></script>
     <script src="../static/js/registro.js"></script>
