@@ -7,20 +7,48 @@
     <link rel="stylesheet" href="/static/css/estilo.css">
 </head>
 <body>
-    <div id="tasks-container">
-        <h2>Mis Tareas</h2>
-        <div id="tasks-list">
-            <!-- Aquí se cargarán las tareas -->
-        </div>
+    <div id="tasks-container" style="display: flex;">
+        <div id="task-actions" style="flex: 1; padding-right: 20px; border-right: 1px solid #ccc;">
+            <h2>Acciones de Tareas</h2>
 
-        <h3>Crear Nueva Tarea</h3>
-        <form id="new-task-form">
-            <input type="text" placeholder="Nombre de la tarea" required>
-            <textarea placeholder="Descripción"></textarea>
-            <button type="submit">Crear Tarea</button>
-        </form>
+            function configurarFormulariosYBotones() {
+                document.getElementById('new-task-form').addEventListener('submit', CreacionTarea);
+
+                document.querySelectorAll('.editar-tarea').forEach(btn => {
+                    btn.addEventListener('click', abrirFormularioEdicion);
+                });
+                document.querySelectorAll('.eliminar-tarea').forEach(btn => {
+                    btn.addEventListener('click', eliminarTarea);
+    });
+}
+
+            <div id="create-task">
+                <h3>Crear Nueva Tarea</h3>
+                <form id="new-task-form">
+                    <input type="text" placeholder="Nombre de la tarea" required>
+                    <textarea placeholder="Descripción"></textarea>
+                    <button type="submit">Crear Tarea</button>
+                </form>
+            </div>
+            <!-- Agrega aquí formularios adicionales para actualizar y eliminar tareas -->
+
+             <!--    <input type="date" name="fechaFinalizacion" required> -->
+
+
+
+        </div>
+        <div id="task-lists" style="flex: 1; padding-left: 20px;">
+            <h2>Mis Tareas</h2>
+            <div id="tasks-list">
+                <!-- Aquí se cargarán las tareas -->
+            </div>
+            <!-- Agrega aquí otros elementos para visualizar tareas por usuario o por ID -->
+        </div>
     </div>
 
     <script src="/static/js/tareas.js"></script>
+    <script src="/static/js/app.js"></script>
+    <!-- Incluye otros scripts JS según sea necesario -->
+
 </body>
 </html>
