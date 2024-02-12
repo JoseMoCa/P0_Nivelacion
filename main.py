@@ -23,24 +23,6 @@
 # PASO 3 (Test)  correr test:   pytest
 
 ## DESARROLLO: ##
-import bcrypt
-import jwt
-
-#from fastapi import FastAPI
-#from fastapi.staticfiles import StaticFiles
-#from routers import user_router, category_router, task_router
-
-#app = FastAPI()
-
-# Montar la carpeta 'static' para servir archivos estáticos
-#app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# una sugerencia es crear un endpoint raiz, que devuelva un mensaje:
-#@app.get("/")
-#async def read_root():
-#    return {"Entonces": "Mi REY "}
-#: print(usuario.nombre_usuario)
-
 
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
@@ -53,7 +35,7 @@ app = FastAPI()
 
 # Configuración de CORS
 origins = [
-    "http://127.0.0.1:8000",  # Añade aquí otros dominios si es necesario, como el de tu frontend en desarrollo
+    "http://127.0.0.1:8000",  "http://127.0.0.1:8000/index.html", "http://127.0.0.1:8000/user-home.html"# Añade aquí otros dominios si es necesario, como el de tu frontend en desarrollo
 ]
 
 app.add_middleware(
@@ -79,6 +61,6 @@ app.include_router(task_router.router)
 # Ruta raíz para servir el HTML principal
 @app.get("/", response_class=HTMLResponse)
 async def get_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})  # Asegúrate de que 'index.html' esté en tu carpeta de templates
+    return templates.TemplateResponse("index.html", {"request": request})
 
 # Si necesitas más rutas, puedes definirlas de manera similar

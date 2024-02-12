@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const descripcion = this.querySelector('textarea').value;
         crearNuevaTarea(nombreTarea, descripcion);  // Función para crear una nueva tarea
     });
+
+    function cargarTareas() {
+    // Aquí iría la lógica para cargar las tareas del backend y mostrarlas en #tasks-list
+    }
+
+    function crearNuevaTarea(nombreTarea, descripcion) {
+        // Aquí iría la lógica para enviar la nueva tarea al backend y actualizar la lista de tareas
+    }
 });
 
-function cargarTareas() {
-    // Aquí iría la lógica para cargar las tareas del backend y mostrarlas en #tasks-list
-}
-
-function crearNuevaTarea(nombreTarea, descripcion) {
-    // Aquí iría la lógica para enviar la nueva tarea al backend y actualizar la lista de tareas
-}
